@@ -1,0 +1,265 @@
+/* Globalne ustawienia */
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #777dc8, #4e54c8, #8f94fb);
+  background-size: 400% 400%;
+  color: #010110;
+  text-align: center;
+  animation: gradientAnimation 8s ease infinite; /* Animowane tło */
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Ciemny motyw */
+body.dark-mode {
+  background: linear-gradient(135deg, #111111, #333, #555);
+  color: #eee;
+}
+
+/* Gwiazdy */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle 5s linear infinite, fadeInOut 5s linear infinite; /* Dodajemy animację fadeInOut */
+  z-index: 0; /* Upewnij się, że gwiazdy są za treścią */
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.1); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+@keyframes fadeInOut {
+  0% { opacity: 0; } /* Gwiazda jest niewidoczna */
+  50% { opacity: 1; } /* Gwiazda jest widoczna */
+  100% { opacity: 0; } /* Gwiazda znów jest niewidoczna */
+}
+
+/* Animacja tła */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(to bottom, #edecf2, #56555c);
+  clip-path: polygon(
+    0% 100%,
+    5% 85%,
+    15% 70%,
+    25% 80%,
+    35% 60%,
+    45% 75%,
+    55% 55%,
+    65% 70%,
+    75% 65%,
+    85% 75%,
+    95% 60%,
+    100% 100%
+  );
+  animation: mountainMove 8s ease-in-out infinite;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(to bottom, #e5e2e2, #323d3e);
+  clip-path: polygon(
+    0% 100%,
+    10% 75%,
+    20% 60%,
+    30% 70%,
+    40% 50%,
+    50% 65%,
+    60% 45%,
+    70% 60%,
+    80% 55%,
+    90% 65%,
+    100% 100%
+  );
+  animation: mountainMove 10s ease-in-out infinite reverse;
+  z-index: -1;
+}
+
+/* Animacja ruchu gór */
+@keyframes mountainMove {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-20px); }
+  100% { transform: translateX(0); }
+}
+
+/* Nagłówek */
+header {
+  background-color: transparent;
+  color: rgb(9, 9, 9);
+  padding: 1rem;
+  text-align: center;
+  animation: bounceIn 1.5s ease;
+}
+
+/* Animacja odbicia (bounce) */
+@keyframes bounceIn {
+  0% { transform: translateY(-100px); opacity: 0; }
+  60% { transform: translateY(20px); opacity: 0.8; }
+  80% { transform: translateY(-10px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Nawigacja */
+header nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+header nav ul li {
+  display: inline-block;
+  margin: 0 1rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Efekt "glow" dla linków */
+header nav ul li a {
+  color: rgb(9, 8, 8);
+  text-decoration: none;
+  font-size: 1.2rem;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header nav ul li a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  transition: width 0.5s ease;
+}
+
+header nav ul li a:hover::before {
+  width: 100%;
+}
+
+header nav ul li a:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  text-shadow: 0 0 8px #fff; /* Efekt "glow" */
+}
+
+/* Sekcja Hero */
+.hero {
+  padding: 2rem;
+  text-align: center;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+/* Efekt pisania (typewriter) */
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #00bfff;
+  animation: typing 4s steps(40) infinite, blinkCursor 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkCursor {
+  from { border-color: transparent; }
+  to { border-color: #00bfff; }
+}
+
+/* Przycisk CTA */
+.cta-button {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
+}
+
+.cta-button:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.8);
+}
+
+/* Efekt pulsowania */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.cta-button:active {
+  animation: pulse 0.5s ease;
+}
+
+/* Stopka */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: -100px; /* Początkowe ukrycie */
+  left: 0;
+  width: 100%;
+  animation: slideInFooter 1.5s ease forwards; /* Płynne pojawienie się */
+  z-index: -2;
+}
+
+/* Animacja stopki – "wjeżdżanie" */
+@keyframes slideInFooter {
+  from { bottom: -100px; }
+  to { bottom: 0; }
+}
+
+/* Animacja przewijania napisu w stopce */
+footer span {
+  display: inline-block;
+  animation: slideInText 4s linear infinite;
+}
+
+@keyframes slideInText {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+/* Animacje podczas przewijania */
+.scroll-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(40px);
+}
+
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

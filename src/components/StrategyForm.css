@@ -1,0 +1,172 @@
+/* Główne stylowanie formularza */
+.strategy-form {
+  max-width: 1200px; /* Jeszcze większa szerokość */
+  margin: 4rem auto; /* Większy margines */
+  padding: 4rem; /* Większy padding dla przestrzeni */
+  border-radius: 24px; /* Większe zaokrąglenie */
+  background: rgba(255, 255, 255, 0.4); /* Glassmorphism */
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.25); /* Głębszy cień */
+  backdrop-filter: blur(25px); /* Silniejsze rozmycie */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Grubsza ramka */
+  animation: fadeIn 0.8s ease-in-out; /* Animacja wejścia */
+}
+
+/* Animacja wejścia */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Nagłówek formularza */
+.strategy-form h2 {
+  text-align: center;
+  font-size: 4rem; /* Jeszcze większy nagłówek */
+  margin-bottom: 3rem;
+  background: linear-gradient(90deg, #4CAF50, #00bfff);
+  background-clip: text; /* Gradient na tekście */
+  -webkit-background-clip: text; /* Gradient na tekście (dla Safari) */
+  -webkit-text-fill-color: transparent; /* Transparentny tekst */
+}
+
+/* Stylizacja etykiet */
+.strategy-form label {
+  display: block;
+  margin-bottom: 2.5rem; /* Większy odstęp */
+  font-weight: bold;
+  font-size: 2.5rem; /* Duże etykiety */
+  color: #2e2e2e;
+}
+
+/* Powiększone pola tekstowe */
+.strategy-form textarea,
+.strategy-form input {
+  width: 100%;
+  min-height: 200px; /* Jeszcze większe pola tekstowe */
+  padding: 2.5rem; /* Większy padding */
+  margin-top: 1rem;
+  font-size: 2.5rem; /* Większa czcionka */
+  border: 2px solid rgba(0, 0, 0, 0.4); /* Grubsza ramka */
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9); /* Jaśniejsze pola */
+  transition: box-shadow 0.4s ease, transform 0.3s ease; /* Animacje */
+}
+
+/* Animacja focus (powiększenie pola podczas edycji) */
+.strategy-form textarea:focus,
+.strategy-form input:focus {
+  outline: none;
+  box-shadow: 0 0 25px rgba(0, 123, 255, 0.9);
+  transform: scale(1.08); /* Mocniejsze powiększenie */
+}
+
+/* Stylowanie przycisku */
+.strategy-form button {
+  display: block;
+  width: 100%;
+  padding: 2rem; /* Większy padding */
+  font-size: 2.2rem; /* Większy tekst na przycisku */
+  color: #fff;
+  background: linear-gradient(90deg, #4CAF50, #00bfff);
+  border: none;
+  border-radius: 60px; /* Bardziej zaokrąglony przycisk */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 123, 255, 0.6);
+}
+
+/* Efekt hover na przycisku */
+.strategy-form button:hover {
+  transform: scale(1.15); /* Większe powiększenie */
+  box-shadow: 0 15px 40px rgba(0, 123, 255, 0.8);
+}
+
+/* Efekt bounce po kliknięciu */
+.strategy-form button:active {
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+/* Responsywność */
+@media (max-width: 1200px) {
+  .strategy-form {
+    padding: 3rem;
+  }
+
+  .strategy-form h2 {
+    font-size: 3rem;
+  }
+
+  .strategy-form textarea,
+  .strategy-form input {
+    min-height: 150px; /* Dostosowanie wysokości */
+    font-size: 3rem; /* Dostosowanie czcionki */
+  }
+
+  .strategy-form button {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .strategy-form {
+    padding: 3rem;
+  }
+
+  .strategy-form h2 {
+    font-size: 2.5rem;
+  }
+
+  .strategy-form textarea,
+  .strategy-form input {
+    min-height: 120px; /* Mniejsze pola */
+    font-size: 5rem;
+  }
+
+  .strategy-form button {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .strategy-form {
+    padding: 1.5rem;
+  }
+
+  .strategy-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .strategy-form textarea,
+  .strategy-form input {
+    min-height: 100px; /* Dopasowanie dla małych ekranów */
+    font-size: 3rem;
+  }
+
+  .strategy-form button {
+    font-size: 1.3rem;
+  }
+}
+
+/* Animowane tło */
+body {
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  background-size: 500% 500%;
+  animation: backgroundMove 12s ease infinite; /* Płynny ruch tła */
+}
+
+@keyframes backgroundMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

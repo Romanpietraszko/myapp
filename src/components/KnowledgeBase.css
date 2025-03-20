@@ -1,0 +1,49 @@
+.knowledge-base {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.filters input[type="text"],
+.filters select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+}
+
+.filters select {
+  width: auto;
+}
+
+.content {
+  display: flex;
+}
+
+.sidebar {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.articles {
+  flex: 3;
+}
+
+.article {
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.article h3 {
+  cursor: pointer;
+  margin-bottom: 5px;
+}

@@ -1,0 +1,13 @@
+/* Styl generowanej wskazówki */
+.tip-content {
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
+  line-height: 1.8;
+  text-align: left;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.5); /* Półprzezroczyste tło */
+  color: #fff; /* Jasny tekst */
+  backdrop-filter: blur(10px); /* Efekt rozmycia */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Delikatny cień */
+}

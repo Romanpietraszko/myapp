@@ -1,0 +1,14 @@
+.hero {
+    text-align: center; /* Wycentruje tekst w sekcji */
+    display: flex; /* Używamy flexboxa */
+    flex-direction: column; /* Elementy ułożone w kolumnie */
+    justify-content: center; /* Wycentruj w pionie */
+    align-items: center; /* Wycentruj w poziomie */
+    min-height: calc(100vh - 100px); /* Wysokość min. 100vh minus wysokość nagłówka i stopki */
+  }
+  
+  .cta-button {
+    /* Dodatkowe style dla przycisku, jeśli potrzebujesz */
+    margin-top: 20px; /* Dodaj odstęp nad przyciskiem */
+  }
+  
