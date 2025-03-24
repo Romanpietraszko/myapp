@@ -37,4 +37,57 @@
     border-radius: 12px;
     background: #e3e3e3;
   }
+  /* Media queries */
+@media (max-width: 768px) {
+  .campaign-planner {
+    padding: 1.5rem; /* Mniejszy padding */
+    border-radius: 15px; /* Mniejsze rogi */
+  }
+
+  .form input {
+    padding: 0.8rem; /* Mniejszy padding */
+    border-radius: 8px; /* Mniejsze rogi */
+    margin: 0.3rem 0; /* Mniejszy margines */
+  }
+
+  button {
+    padding: 0.8rem 1.5rem; /* Mniejszy padding */
+    font-size: 0.9rem; /* Mniejszy tekst */
+    border-radius: 6px; /* Mniejsze rogi */
+  }
+
+  li {
+    padding: 0.8rem; /* Mniejszy padding */
+    border-radius: 8px; /* Mniejsze rogi */
+    margin: 0.8rem 0; /* Mniejszy margines */
+  }
+}
+
+/* Małe ekrany (np. telefony) */
+@media (max-width: 480px) {
+  .campaign-planner {
+    padding: 1rem; /* Jeszcze mniejszy padding */
+    border-radius: 10px; /* Jeszcze mniejsze rogi */
+  }
+
+  .form input {
+    padding: 0.6rem; /* Jeszcze mniejszy padding */
+    border-radius: 6px; /* Jeszcze mniejsze rogi */
+    margin: 0.2rem 0; /* Jeszcze mniejszy margines */
+    font-size: 0.8rem; /* Mniejszy tekst */
+  }
+
+  button {
+    padding: 0.6rem 1rem; /* Jeszcze mniejszy padding */
+    font-size: 0.8rem; /* Jeszcze mniejszy tekst */
+    border-radius: 4px; /* Jeszcze mniejsze rogi */
+  }
+
+  li {
+    padding: 0.6rem; /* Jeszcze mniejszy padding */
+    border-radius: 6px; /* Jeszcze mniejsze rogi */
+    margin: 0.6rem 0; /* Jeszcze mniejszy margines */
+    font-size: 0.8rem; /* Mniejszy tekst */
+  }
+}
   

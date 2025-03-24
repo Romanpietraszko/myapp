@@ -11,3 +11,19 @@
   backdrop-filter: blur(10px); /* Efekt rozmycia */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Delikatny cień */
 }
+@media (max-width: 768px) {
+  .tip-content {
+    font-size: 1.2rem; /* Mniejsza czcionka na mniejszych ekranach */
+    padding: 1rem; /* Mniejszy padding */
+    margin-top: 1rem; /* Mniejszy margines */
+    border-radius: 8px; /* Mniejsze zaokrąglenie rogów */
+  }
+}
+
+@media (max-width: 480px) {
+  .tip-content {
+    font-size: 1rem; /* Jeszcze mniejsza czcionka na bardzo małych ekranach */
+    padding: 0.8rem; /* Jeszcze mniejszy padding */
+    margin-top: 0.8rem; /* Jeszcze mniejszy margines */
+  }
+}

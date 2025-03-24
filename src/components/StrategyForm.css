@@ -170,3 +170,91 @@ body {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+/* Responsywność */
+@media (max-width: 1200px) {
+  .strategy-form {
+    padding: 2rem; /* Zmniejszony padding */
+    margin: 2rem auto; /* Zmniejszony margines */
+  }
+
+  .strategy-form h2 {
+    font-size: 2.5rem; /* Mniejszy nagłówek */
+    margin-bottom: 2rem; /* Zmniejszony margines */
+  }
+
+  .strategy-form label {
+    font-size: 2rem; /* Mniejsza etykieta */
+    margin-bottom: 2rem; /* Mniejszy odstęp */
+  }
+
+  .strategy-form textarea,
+  .strategy-form input {
+    min-height: 150px; /* Dostosowanie wysokości */
+    font-size: 1.8rem; /* Dostosowanie czcionki */
+    padding: 1.5rem; /* Mniejszy padding */
+  }
+
+  .strategy-form button {
+    font-size: 1.6rem; /* Mniejszy przycisk */
+    padding: 1.5rem; /* Mniejszy padding */
+  }
+}
+
+@media (max-width: 768px) {
+  .strategy-form {
+    padding: 1.5rem; /* Jeszcze mniejszy padding */
+    margin: 1.5rem auto; /* Jeszcze mniejszy margines */
+  }
+
+  .strategy-form h2 {
+    font-size: 2rem; /* Jeszcze mniejszy nagłówek */
+    margin-bottom: 1.5rem; /* Jeszcze mniejszy margines */
+  }
+
+  .strategy-form label {
+    font-size: 1.6rem; /* Jeszcze mniejsza etykieta */
+    margin-bottom: 1.5rem; /* Jeszcze mniejszy odstęp */
+  }
+
+  .strategy-form textarea,
+  .strategy-form input {
+    min-height: 120px; /* Mniejsze pola */
+    font-size: 1.4rem; /* Jeszcze mniejsza czcionka */
+    padding: 1.2rem; /* Jeszcze mniejszy padding */
+  }
+
+  .strategy-form button {
+    font-size: 1.4rem; /* Jeszcze mniejszy przycisk */
+    padding: 1.2rem; /* Jeszcze mniejszy padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .strategy-form {
+    padding: 1rem; /* Najmniejszy padding */
+    margin: 1rem auto; /* Najmniejszy margines */
+  }
+
+  .strategy-form h2 {
+    font-size: 1.7rem; /* Najmniejszy nagłówek */
+    margin-bottom: 1rem; /* Najmniejszy margines */
+  }
+
+  .strategy-form label {
+    font-size: 1.4rem; /* Najmniejsza etykieta */
+    margin-bottom: 1rem; /* Najmniejszy odstęp */
+  }
+
+  .strategy-form textarea,
+  .strategy-form input {
+    min-height: 100px; /* Dopasowanie dla małych ekranów */
+    font-size: 1.2rem; /* Najmniejsza czcionka */
+    padding: 1rem; /* Najmniejszy padding */
+  }
+
+  .strategy-form button {
+    font-size: 1.2rem; /* Najmniejszy przycisk */
+    padding: 1rem; /* Najmniejszy padding */
+  }
+}
+

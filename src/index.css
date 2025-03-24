@@ -54,7 +54,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) and (max-width: 480px) {
+@media (prefers-color-scheme: light) and (max-width: 768px) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -68,5 +68,8 @@ button:focus-visible {
   }
   .hero{
     padding:1rem;
+  }
+  body{
+    font-size: 14px;
   }
 }
