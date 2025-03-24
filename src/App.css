@@ -203,6 +203,7 @@ header nav ul li a:hover {
   border-radius: 50px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
+  z-index: 3;
 }
 
 .cta-button:hover {
@@ -269,6 +270,6 @@ footer span {
   }
   body::before,
   body::after {
-    height: 150px; /* Zmniejszona wysokość */
+    height: 50px; /* Zmniejszona wysokość */
   }
 }
