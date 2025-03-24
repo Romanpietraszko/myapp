@@ -263,3 +263,12 @@ footer span {
   opacity: 1;
   transform: translateY(0);
 }
+@media (max-width: 768px) {
+  body{
+    font-size: 14px;
+  }
+  body::before,
+  body::after {
+    height: 150px; /* Zmniejszona wysokość */
+  }
+}
