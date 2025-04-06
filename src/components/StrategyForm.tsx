@@ -22,7 +22,7 @@ const StrategyForm: React.FC<StrategyFormProps> = ({ onGenerate }) => {
       return;
     }
 
-    const prompt = `Stwórz strategię marketingową dla celu: "${goal}", grupa docelowa: "${audience}", kanały: "${platforms}". Zaproponuj etapy kampanii, pomysły na treści (posty, rolki) i edukacyjne wskazówki.`;
+    const prompt = `Stwórz zwięzłą strategię marketingową dla: '${goal}'. Grupa docelowa: '${audience}', kanały: '${platforms}'. Wymień dokładnie 3 etapy kampanii, przykładowe treści (posty, rolki) i 3 praktyczne wskazówki.`;
 
     try {
       const response = await fetch(
