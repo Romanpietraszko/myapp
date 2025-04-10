@@ -1,24 +1,27 @@
-import { useState } from 'react';
-import './EducationTips.css';
+import React, { useState } from 'react';
 
 // Endpoint Google Gemini
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent';
 
-// Kategorie wskazówek
-const categories = [
-  'SEO',
-  'Social Media',
-  'Content Marketing',
-  'Email Marketing',
-  'Automatyzacja',
-  'Analityka'
-];
+interface EducationTipsProps {
+  categories: string[]; // Lista dostępnych kategorii
+  defaultCategory?: string; // Domyślna kategoria (opcjonalna)
+  initialCustomContext?: string; // Początkowy kontekst (opcjonalny)
+  customContextPlaceholder?: string; // Placeholder dla pola kontekstu (opcjonalny)
+  initialTipText?: string; // Tekst początkowy przed wygenerowaniem wskazówki
+}
 
-const EducationTips: React.FC = () => {
-  const [tip, setTip] = useState<string>('Generuję wskazówkę...');
+const EducationTips = ({
+  categories,
+  defaultCategory = categories[0],
+  initialCustomContext = '', // Domyślnie pusty ciąg
+  customContextPlaceholder = 'Np. sklep internetowy z odzieżą',
+  initialTipText = 'Generuję wskazówkę...',
+}: EducationTipsProps) => {
+  const [tip, setTip] = useState<string>(initialTipText);
   const [loading, setLoading] = useState<boolean>(false);
-  const [selectedCategory, setSelectedCategory] = useState<string>(categories[0]);
-  const [customContext, setCustomContext] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>(defaultCategory);
+  const [customContext, setCustomContext] = useState<string>(initialCustomContext); // Stan dla kontekstu
 
   // Funkcja do pobrania wskazówki z Gemini
   const fetchTip = async () => {
@@ -74,14 +77,13 @@ const EducationTips: React.FC = () => {
   };
 
   // Obsługa zmiany kontekstu
-  const handleContextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCustomContextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomContext(e.target.value);
   };
 
   return (
     <div className="education-tips">
-      <h3>💡 Wskazówka Marketingowa</h3>
-
+      {/* Wybór kategorii */}
       <label htmlFor="category">Wybierz kategorię:</label>
       <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
         {categories.map((category) => (
@@ -91,19 +93,22 @@ const EducationTips: React.FC = () => {
         ))}
       </select>
 
+      {/* Pole do wprowadzania kontekstu */}
       <label htmlFor="context">Dostosuj do swojej branży (opcjonalnie):</label>
       <input
         id="context"
         type="text"
-        value={customContext}
-        onChange={handleContextChange}
-        placeholder="Np. sklep internetowy z odzieżą"
+        value={customContext} // Używamy stanu lokalnego
+        onChange={handleCustomContextChange} // Aktualizujemy stan przy zmianie
+        placeholder={customContextPlaceholder}
       />
 
+      {/* Przycisk generowania wskazówki */}
       <button onClick={fetchTip} disabled={loading}>
         {loading ? 'Generowanie...' : 'Wygeneruj wskazówkę'}
       </button>
 
+      {/* Wyświetlanie wskazówki */}
       <p className="tip-content">{loading ? 'Generowanie...' : tip}</p>
     </div>
   );

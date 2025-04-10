@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import StrategyForm from '../components/StrategyForm';
 import StrategyResult from '../components/StrategyResult';
-import EducationTips from '../components/EducationTips';
 import CampaignPlanner from '../components/CampaignPlanner';
 import KnowledgeBase from '../components/KnowledgeBase';
 import './Home.css';
@@ -20,9 +19,6 @@ const Home: React.FC = () => {
       <div className="tabs">
         <button onClick={() => setActiveTab('generator')} className={activeTab === 'generator' ? 'active' : ''}>
           Generator Strategii
-        </button>
-        <button onClick={() => setActiveTab('tips')} className={activeTab === 'tips' ? 'active' : ''}>
-          Wskazówki Marketingowe
         </button>
         <button onClick={() => setActiveTab('planner')} className={activeTab === 'planner' ? 'active' : ''}>
           Planer Kampanii
@@ -41,7 +37,7 @@ const Home: React.FC = () => {
           </>
         )}
 
-        {activeTab === 'tips' && <EducationTips />}
+       
         {activeTab === 'planner' && <CampaignPlanner />}
         {activeTab === 'knowledge' && <KnowledgeBase />}
       </div>

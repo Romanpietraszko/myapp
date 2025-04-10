@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+
 
 function Header() {
   return (
@@ -9,19 +9,13 @@ function Header() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Strona Główna</Link>
+            Generator Strategii
+          </li>       
+          <li>
+           Planer Kampanii
           </li>
           <li>
-            <Link to="/home">Generator Strategii</Link>
-          </li>
-          <li>
-            <Link to="/tips">Wskazówki Marketingowe</Link>
-          </li>
-          <li>
-            <Link to="/campaign-planner">Planer Kampanii</Link>
-          </li>
-          <li>
-            <Link to="/knowledge-base">Baza Wiedzy</Link>
+            Baza Wiedzy
           </li>
         </ul>
       </nav>

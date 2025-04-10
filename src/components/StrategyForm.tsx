@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './StrategyForm.css'; // Import stylów
+import EducationTips from './EducationTips'; // Import komponentu EducationTips
 
 // Import klucza API
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
@@ -45,23 +46,55 @@ const StrategyForm: React.FC<StrategyFormProps> = ({ onGenerate }) => {
     }
   };
 
+  // Kontekst dla wskazówek
+  const customContext = `${goal ? `Cel: ${goal}. ` : ''}${audience ? `Grupa docelowa: ${audience}. ` : ''}${
+    platforms ? `Platformy: ${platforms}.` : ''
+  }`;
+
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="strategy-form-container">
       <h2>Generuj strategię marketingową</h2>
-      <label>
-        Cel kampanii:
-        <input value={goal} onChange={(e) => setGoal(e.target.value)} required />
-      </label>
-      <label>
-        Grupa docelowa:
-        <input value={audience} onChange={(e) => setAudience(e.target.value)} required />
-      </label>
-      <label>
-        Platformy (np. Instagram, TikTok):
-        <input value={platforms} onChange={(e) => setPlatforms(e.target.value)} required />
-      </label>
-      <button type="submit">Generuj strategię</button>
-    </form>
+
+      {/* Sekcja z wskazówkami */}
+      <EducationTips
+        categories={['SEO', 'Social Media', 'Content Marketing']}
+        defaultCategory="Social Media"
+        customContextPlaceholder={customContext || 'Brak danych.'} // Dynamiczny kontekst
+        initialTipText="Kliknij, aby uzyskać wskazówkę..."
+      />
+
+      {/* Formularz */}
+      <form onSubmit={handleSubmit}>
+        <label>
+          Cel kampanii:
+          <input
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
+            placeholder="Np. zwiększenie sprzedaży produktów"
+            required
+          />
+        </label>
+        <label>
+          Grupa docelowa:
+          <input
+            value={audience}
+            onChange={(e) => setAudience(e.target.value)}
+            placeholder="Np. młodzi dorośli interesujący się modą"
+            required
+          />
+        </label>
+        <label>
+          Platformy (np. Instagram, TikTok):
+          <input
+            value={platforms}
+            onChange={(e) => setPlatforms(e.target.value)}
+            placeholder="Np. Instagram, Facebook"
+            required
+          />
+        </label>
+        <button type="submit">Generuj strategię</button>
+      </form>
+    </div>
   );
 };
 

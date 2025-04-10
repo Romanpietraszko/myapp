@@ -16,6 +16,90 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+/* Animacja tła */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Stylowanie przycisku CTA */
+.cta-button {
+  position: relative;
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
+  overflow: visible; /* Ukryj okręgi poza granicami przycisku */
+  z-index: 1;
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.8);
+}
+
+/* Pulsujące okręgi przy najechaniu myszką */
+.cta-button::before,
+.cta-button::after,
+.cta-button .circle-1,
+.cta-button .circle-2,
+.cta-button .circle-3 {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(240, 239, 241, 0.8); /* Delikatny obrys */
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none; /* Wyłącz interakcję */
+}
+
+/* Rozpoczęcie animacji okręgów po najechaniu myszką */
+.cta-button:hover::before {
+  animation: expandAndFade 6s forwards;
+}
+
+.cta-button:hover::after {
+  animation: expandAndFade 6s 3s forwards; /* Drugi okrąg startuje z opóźnieniem */
+}
+.cta-button:hover .circle-1 {
+  animation: expandAndFade 6s 2s forwards; /* Trzeci okrąg */
+}
+
+.cta-button:hover .circle-2 {
+  animation: expandAndFade 6s 3s forwards; /* Czwarty okrąg */
+}
+
+.cta-button:hover .circle-3 {
+  animation: expandAndFade 6s 4s forwards; /* Piąty okrąg */
+}
+
+@keyframes expandAndFade {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  70% {
+    width: 200vw; /* Rozszerzenie na cały ekran */
+    height: 200vw;
+    opacity: 1;
+  }
+  100% {
+    width: 200vw;
+    height: 200vw;
+    opacity: 0;
+  }
+}
+
 /* Ciemny motyw */
 body.dark-mode {
   background: linear-gradient(135deg, #111111, #333, #555);
@@ -31,6 +115,7 @@ body.dark-mode {
   border-radius: 50%;
   animation: twinkle 5s linear infinite, fadeInOut 5s linear infinite; /* Dodajemy animację fadeInOut */
   z-index: 0; /* Upewnij się, że gwiazdy są za treścią */
+  pointer-events: none; /* Wyłącz interakcję */
 }
 
 @keyframes twinkle {
@@ -38,19 +123,26 @@ body.dark-mode {
   50% { opacity: 0.9; transform: scale(1.1); }
   100% { opacity: 0.7; transform: scale(1); }
 }
+
 @keyframes fadeInOut {
   0% { opacity: 0; } /* Gwiazda jest niewidoczna */
   50% { opacity: 1; } /* Gwiazda jest widoczna */
   100% { opacity: 0; } /* Gwiazda znów jest niewidoczna */
 }
 
-/* Animacja tła */
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Ukrywanie gór w trybie jasnym */
+body:not(.dark-mode)::before,
+body:not(.dark-mode)::after {
+  display: none; /* Góry są niewidoczne */
 }
 
+/* Pokazywanie gór w trybie ciemnym */
+body.dark-mode::before,
+body.dark-mode::after {
+  display: block; /* Góry są widoczne */
+}
+
+/* Pierwszy plan gór */
 body::before {
   content: "";
   position: absolute;
@@ -76,6 +168,7 @@ body::before {
   animation: mountainMove 8s ease-in-out infinite;
 }
 
+/* Drugi plan gór */
 body::after {
   content: "";
   position: absolute;
@@ -211,17 +304,6 @@ header nav ul li a:hover {
   box-shadow: 0 8px 25px rgba(0, 123, 255, 0.8);
 }
 
-/* Efekt pulsowania */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-.cta-button:active {
-  animation: pulse 0.5s ease;
-}
-
 /* Stopka */
 footer {
   background-color: #333;
@@ -264,6 +346,7 @@ footer span {
   opacity: 1;
   transform: translateY(0);
 }
+
 @media (max-width: 768px) {
   body {
     font-size: 14px; /* Bazowa czcionka */
@@ -309,4 +392,3 @@ footer span {
     padding: 10px; /* Mniejszy padding */
   }
 }
-
