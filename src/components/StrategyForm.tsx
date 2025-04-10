@@ -38,7 +38,7 @@ const StrategyForm: React.FC<StrategyFormProps> = ({ onGenerate }) => {
       );
 
       const data = await response.json();
-      const generatedText = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Nie udało się wygenerować strategii.';
+      const generatedText = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Generuje strategie ...';
       onGenerate(generatedText);
     } catch (error) {
       console.error('Błąd podczas generowania:', error);

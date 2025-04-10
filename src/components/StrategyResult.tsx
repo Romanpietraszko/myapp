@@ -1,4 +1,6 @@
 // Definiujemy interfejs dla propsów
+import React from 'react';
+import './StrategyResult.css';
 interface StrategyResultProps {
     result: string;
   }
