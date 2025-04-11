@@ -7,7 +7,7 @@ interface StrategyResultProps {
   
   const StrategyResult: React.FC<StrategyResultProps> = ({ result }) => {
     return (
-      <div>
+      <div className='strategy-result'>
         <h2>Wygenerowana Strategia:</h2>
         <pre>{result}</pre>
       </div>

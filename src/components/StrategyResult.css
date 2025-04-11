@@ -3,8 +3,8 @@
 .strategy-result {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 20px;
-    padding: 15px;
+    margin: 30px;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
@@ -13,7 +13,7 @@
   }
   
   .strategy-result h2 {
-    color: #333;
+    color: #101010;
     font-size: 1.5rem;
     margin-bottom: 15px;
   }
