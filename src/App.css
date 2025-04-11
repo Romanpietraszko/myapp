@@ -7,7 +7,7 @@ body {
   padding: 0;
   background: linear-gradient(135deg, #777dc8, #4e54c8, #8f94fb);
   background-size: 400% 400%;
-  color: #101012;
+  color: #0e0e0f;
   text-align: center;
   animation: gradientAnimation 8s ease infinite; /* Animowane tło */
   min-height: 100vh;
@@ -204,10 +204,13 @@ body::after {
 /* Nagłówek */
 header {
   background-color: transparent;
-  color: rgb(15, 1, 1);
+  color: rgb(10, 9, 10);
   padding: 1rem;
   text-align: center;
   animation: bounceIn 1.5s ease;
+}
+body.dark-mode header  {
+  color: white; /* Biały kolor w trybie ciemnym */
 }
 
 /* Animacja odbicia (bounce) */
