@@ -5,11 +5,11 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #777dc8, #4e54c8, #8f94fb);
-  background-size: 400% 400%;
+  background: linear-gradient(to right, #ffffff 0%, #b3e5fc 50%, #03a9f4 100%);
+  background-size: 200% 200%;
   color: #0e0e0f;
   text-align: center;
-  animation: gradientAnimation 8s ease infinite; /* Animowane tło */
+  animation: gradientAnimation 12s ease infinite; /* Animowane tło */
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
@@ -240,27 +240,6 @@ header nav ul li a {
   font-size: 1.2rem;
   position: relative;
   transition: color 0.3s ease, transform 0.3s ease;
-}
-
-header nav ul li a::before {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background: #fff;
-  transition: width 0.5s ease;
-}
-
-header nav ul li a:hover::before {
-  width: 100%;
-}
-
-header nav ul li a:hover {
-  color: #ffffff;
-  transform: scale(1.1);
-  text-shadow: 0 0 8px #fff; /* Efekt "glow" */
 }
 
 /* Sekcja Hero */
