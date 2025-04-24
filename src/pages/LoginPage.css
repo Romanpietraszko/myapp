@@ -1,0 +1,45 @@
+/* LoginPage.css */
+
+/* Kontener główny */
+.login-container {
+    width: 100%;
+    background-color: #000; /* Czarne tło */
+    color: white; /* Biały tekst */
+    min-height: 100vh; /* Cała wysokość ekranu */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrowanie w poziomie */
+    justify-content: center; /* Centrowanie w pionie */
+    padding: 20px; /* Odstęp od krawędzi ekranu */
+  }
+  
+  /* Kontener logo */
+  .logo-container {
+    text-align: center; /* Wyśrodkowanie logo */
+    cursor: pointer; /* Efekt wskaźnika myszy */
+  }
+  
+  /* Styl dla obrazka logo */
+  .logo-image {
+    width: 200px; /* Szerokość logo */
+    height: auto; /* Automatyczna wysokość, aby zachować proporcje */
+    transition: transform 0.3s ease; /* Animacja przy najechaniu */
+  }
+  
+  /* Efekt hover na logo */
+  .logo-image:hover {
+    transform: scale(1.1); /* Lekkie powiększenie przy najechaniu */
+  }
+  /* Media queries dla ekranów mobilnych */
+@media (max-width: 600px) {
+    .logo-image {
+      width: 150px; /* Mniejsze logo na małych ekranach */
+    }
+  }
+  
+  /* Media queries dla ekranów desktopowych */
+  @media (min-width: 1200px) {
+    .logo-image {
+      width: 300px; /* Większe logo na dużych ekranach */
+    }
+  }
