@@ -1,55 +1,98 @@
 /* Kontener główny */
 .home-container {
-    padding: 2rem;
-    text-align: center;
+  width: 100%; /* Cała szerokość ekranu */
+  padding: 2rem;
+  text-align: center;
+  background-color: rgb(243, 236, 236);
+}
+
+/* Styl zakładek */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Owiń zakładki, jeśli nie mieszczą się w jednym rzędzie */
+}
+
+.tabs button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #4CAF50, #00bfff);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 1rem; /* Domyślny rozmiar tekstu */
+}
+
+.tabs button:hover {
+  transform: scale(1.1);
+}
+
+/* Aktywna zakładka */
+.tabs button.active {
+  background: #2e7d32;
+  box-shadow: 0 0 15px rgba(0, 255, 128, 0.7);
+}
+
+/* Styl zawartości zakładek */
+.tab-content {
+  margin-top: 2rem;
+}
+
+/* Przycisk powrotu */
+.cta-button {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  color: rgb(255, 255, 255);
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 2rem;
+  transition: transform 0.3s;
+  font-size: 1rem; /* Domyślny rozmiar tekstu */
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  /* Dostosowanie kontenera głównego */
+  .home-container {
+    padding: 1rem; /* Zmniejsz padding na mniejszych ekranach */
   }
-  
-  /* Styl zakładek */
-  .tabs {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  
+
+  /* Dostosowanie przycisków zakładek */
   .tabs button {
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #4CAF50, #00bfff);
-    color: white;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 0.7rem 1.5rem; /* Zmniejsz padding przycisków */
+    font-size: 0.9rem; /* Zmniejsz rozmiar tekstu */
   }
-  
-  .tabs button:hover {
-    transform: scale(1.1);
-  }
-  
-  /* Aktywna zakładka */
-  .tabs button.active {
-    background: #2e7d32;
-    box-shadow: 0 0 15px rgba(0, 255, 128, 0.7);
-  }
-  
-  /* Styl zawartości zakładek */
-  .tab-content {
-    margin-top: 2rem;
-  }
-  
-  /* Przycisk powrotu */
+
+  /* Dostosowanie przycisku powrotu */
   .cta-button {
-    display: inline-block;
-    padding: 0.7rem 1.5rem;
-    background: linear-gradient(90deg, #007bff, #00bfff);
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    margin-top: 2rem;
-    transition: transform 0.3s;
+    padding: 0.5rem 1rem; /* Zmniejsz padding przycisku */
+    font-size: 0.9rem; /* Zmniejsz rozmiar tekstu */
   }
-  
-  .cta-button:hover {
-    transform: scale(1.1);
+}
+
+@media (max-width: 480px) {
+  /* Dostosowanie kontenera głównego */
+  .home-container {
+    padding: 0.5rem; /* Jeszcze mniejszy padding */
   }
-  
+
+  /* Dostosowanie przycisków zakładek */
+  .tabs button {
+    padding: 0.5rem 1rem; /* Jeszcze mniejszy padding */
+    font-size: 0.8rem; /* Jeszcze mniejszy tekst */
+  }
+
+  /* Dostosowanie przycisku powrotu */
+  .cta-button {
+    padding: 0.4rem 0.8rem; /* Jeszcze mniejszy padding */
+    font-size: 0.8rem; /* Jeszcze mniejszy tekst */
+  }
+}

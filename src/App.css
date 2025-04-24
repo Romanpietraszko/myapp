@@ -5,105 +5,26 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #ffffff 0%, #b3e5fc 50%, #03a9f4 100%);
-  background-size: 200% 200%;
   color: #0e0e0f;
   text-align: center;
-  animation: gradientAnimation 12s ease infinite; /* Animowane tło */
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.5s ease;
+  background-color:rgb(3, 3, 3); 
+  background: linear-gradient(135deg, #111111, #333, #555);
 }
 
-/* Animacja tła */
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Stylowanie przycisku CTA */
-.cta-button {
-  position: relative;
-  display: inline-block;
-  padding: 0.7rem 1.5rem;
-  background: linear-gradient(90deg, #007bff, #00bfff);
-  color: white;
-  text-decoration: none;
-  border-radius: 50px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
-  overflow: visible; /* Ukryj okręgi poza granicami przycisku */
-  z-index: 1;
-}
-
-.cta-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.8);
-}
-
-/* Pulsujące okręgi przy najechaniu myszką */
-.cta-button::before,
-.cta-button::after,
-.cta-button .circle-1,
-.cta-button .circle-2,
-.cta-button .circle-3 {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(240, 239, 241, 0.8); /* Delikatny obrys */
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  pointer-events: none; /* Wyłącz interakcję */
-}
-
-/* Rozpoczęcie animacji okręgów po najechaniu myszką */
-.cta-button:hover::before {
-  animation: expandAndFade 6s forwards;
-}
-
-.cta-button:hover::after {
-  animation: expandAndFade 6s 3s forwards; /* Drugi okrąg startuje z opóźnieniem */
-}
-.cta-button:hover .circle-1 {
-  animation: expandAndFade 6s 2s forwards; /* Trzeci okrąg */
-}
-
-.cta-button:hover .circle-2 {
-  animation: expandAndFade 6s 3s forwards; /* Czwarty okrąg */
-}
-
-.cta-button:hover .circle-3 {
-  animation: expandAndFade 6s 4s forwards; /* Piąty okrąg */
-}
-
-@keyframes expandAndFade {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 1;
-  }
-  70% {
-    width: 200vw; /* Rozszerzenie na cały ekran */
-    height: 200vw;
-    opacity: 1;
-  }
-  100% {
-    width: 200vw;
-    height: 200vw;
-    opacity: 0;
-  }
+/* Jasny tryb */
+body:not(.dark-mode) {
+  background-color: rgb(7, 7, 7) !important; /* Białe tło */
+  background-image: none !important; /* Wyłącz gradienty */
 }
 
 /* Ciemny motyw */
 body.dark-mode {
   background: linear-gradient(135deg, #111111, #333, #555);
-  color: #eee;
+  color: #201f1f;
 }
 
 /* Gwiazdy */
@@ -113,9 +34,9 @@ body.dark-mode {
   height: 2px;
   background-color: white;
   border-radius: 50%;
-  animation: twinkle 5s linear infinite, fadeInOut 5s linear infinite; /* Dodajemy animację fadeInOut */
-  z-index: 0; /* Upewnij się, że gwiazdy są za treścią */
-  pointer-events: none; /* Wyłącz interakcję */
+  animation: twinkle 5s linear infinite, fadeInOut 5s linear infinite;
+  z-index: 0;
+  pointer-events: none;
 }
 
 @keyframes twinkle {
@@ -125,9 +46,9 @@ body.dark-mode {
 }
 
 @keyframes fadeInOut {
-  0% { opacity: 0; } /* Gwiazda jest niewidoczna */
-  50% { opacity: 1; } /* Gwiazda jest widoczna */
-  100% { opacity: 0; } /* Gwiazda znów jest niewidoczna */
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 /* Ukrywanie gór w trybie jasnym */
@@ -203,14 +124,15 @@ body::after {
 
 /* Nagłówek */
 header {
-  background-color: transparent;
+  background-color: transparent; /* Transparentne tło */
   color: rgb(10, 9, 10);
   padding: 1rem;
   text-align: center;
   animation: bounceIn 1.5s ease;
 }
-body.dark-mode header  {
-  color: white; /* Biały kolor w trybie ciemnym */
+body.dark-mode header {
+  background-color: rgba(0, 0, 0, 0.8); /* Przezroczyste tło w trybie ciemnym */
+  color: rgb(37, 35, 35);
 }
 
 /* Animacja odbicia (bounce) */
@@ -272,32 +194,37 @@ header nav ul li a {
 .cta-button {
   display: inline-block;
   padding: 0.7rem 1.5rem;
-  background: linear-gradient(90deg, #007bff, #00bfff);
-  color: white;
+  background: none; /* Usuń gradient */
+  background-color: #ffffff; /* Białe tło */
+  color: black; /* Czarny tekst */
   text-decoration: none;
   border-radius: 50px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Delikatny cień */
   z-index: 4;
 }
 
 .cta-button:hover {
   transform: scale(1.2);
-  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.8);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Silniejszy cień */
 }
 
 /* Stopka */
 footer {
-  background-color: #333;
-  color: white;
+  background-color: #f9f9f9; /* Jasne tło w trybie jasnym */
+  color: #333;
   text-align: center;
   padding: 20px;
   position: fixed;
-  bottom: -100px; /* Początkowe ukrycie */
+  bottom: -100px;
   left: 0;
   width: 100%;
-  animation: slideInFooter 1.5s ease forwards; /* Płynne pojawienie się */
+  animation: slideInFooter 1.5s ease forwards;
   z-index: -2;
+}
+body.dark-mode footer {
+  background-color: #333; /* Ciemne tło w trybie ciemnym */
+  color: white;
 }
 
 /* Animacja stopki – "wjeżdżanie" */
@@ -331,46 +258,46 @@ footer span {
 
 @media (max-width: 768px) {
   body {
-    font-size: 14px; /* Bazowa czcionka */
+    font-size: 14px;
   }
 
   body::before,
   body::after {
-    height: 40px; /* Zmniejszona wysokość "gór" */
+    height: 40px;
   }
 
   header {
-    padding: 0.5rem; /* Zmniejsz padding headera */
+    padding: 0.5rem;
   }
 
   header h1 {
-    font-size: 1.5rem; /* Mniejszy nagłówek */
+    font-size: 1.5rem;
   }
 
   header nav ul li {
-    display: block; /* Elementy jeden pod drugim */
-    margin: 0.5rem 0; /* Mniejsze marginesy */
+    display: block;
+    margin: 0.5rem 0;
   }
 
   header nav ul li a {
-    font-size: 1rem; /* Mniejsze linki w nawigacji */
+    font-size: 1rem;
   }
 
   .hero h1 {
-    font-size: 2rem; /* Mniejszy nagłówek hero */
+    font-size: 2rem;
   }
 
   .hero p {
-    font-size: 1.2rem; /* Mniejszy paragraf hero */
+    font-size: 1.2rem;
   }
 
   .cta-button {
-    font-size: 1rem; /* Mniejszy przycisk */
-    padding: 0.5rem 1rem; /* Mniejsze paddingi */
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
   }
 
   footer {
-    font-size: 0.8rem; /* Mniejsza czcionka w stopce */
-    padding: 10px; /* Mniejszy padding */
+    font-size: 0.8rem;
+    padding: 10px;
   }
 }

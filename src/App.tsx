@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LandingPage from './pages/LandingPage';
 import Home from './pages/Home';
 import { useEffect, useState } from 'react';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -50,7 +50,7 @@ function App() {
       <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
         {/* Przycisk przełączania trybu */}
         <button onClick={toggleDarkMode}>
-          {darkMode ? 'Wyłącz ciemny motyw' : 'Włącz ciemny motyw'}
+          {darkMode ? 'Wyłącz ciekawy motyw' : 'Włącz ciekawy motyw'}
         </button>
 
         {/* Renderowanie gwiazd (tryb ciemny) */}
@@ -69,7 +69,7 @@ function App() {
 
         {/* Trasy */}
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/home" element={<Home />} />
         </Routes>
       </div>
