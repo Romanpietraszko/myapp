@@ -59,7 +59,6 @@ const StrategyForm: React.FC<StrategyFormProps> = ({ onGenerate }) => {
         categories={['SEO', 'Social Media', 'Content Marketing']}
         defaultCategory="Social Media"
         customContextPlaceholder={customContext || 'Brak danych.'} // Dynamiczny kontekst
-        initialTipText="Kliknij, aby uzyskać wskazówkę..."
       />
        <h2>Generuj strategię marketingową</h2>
 
