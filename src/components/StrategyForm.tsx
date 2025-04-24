@@ -53,7 +53,6 @@ const StrategyForm: React.FC<StrategyFormProps> = ({ onGenerate }) => {
 
   return (
     <div className="strategy-form-container">
-      <h2>Generuj strategię marketingową</h2>
 
       {/* Sekcja z wskazówkami */}
       <EducationTips
@@ -62,6 +61,7 @@ const StrategyForm: React.FC<StrategyFormProps> = ({ onGenerate }) => {
         customContextPlaceholder={customContext || 'Brak danych.'} // Dynamiczny kontekst
         initialTipText="Kliknij, aby uzyskać wskazówkę..."
       />
+       <h2>Generuj strategię marketingową</h2>
 
       {/* Formularz */}
       <form onSubmit={handleSubmit}>
