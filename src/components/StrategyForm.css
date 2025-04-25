@@ -1,21 +1,21 @@
 /* Główne stylowanie formularza */
 .strategy-form {
-  max-width: 1200px; /* Jeszcze większa szerokość */
-  margin: 4rem auto; /* Większy margines */
-  padding: 4rem; /* Większy padding dla przestrzeni */
-  border-radius: 24px; /* Większe zaokrąglenie */
-  background: rgba(255, 255, 255, 0.4); /* Glassmorphism */
-  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.25); /* Głębszy cień */
-  backdrop-filter: blur(25px); /* Silniejsze rozmycie */
-  border: 1px solid rgba(255, 255, 255, 0.5); /* Grubsza ramka */
-  animation: fadeIn 0.8s ease-in-out; /* Animacja wejścia */
+  max-width: 800px; /* Ograniczenie szerokości dla czytelności */
+  margin: 4rem auto; /* Margines na górze i na dole */
+  padding: 2.5rem; /* Optymalny padding */
+  border-radius: 16px; /* Lekko zaokrąglone rogi */
+  background: rgba(255, 255, 255, 0.9); /* Przejrzyste tło z efektem glassmorphism */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Subtelniejszy cień */
+  backdrop-filter: blur(10px); /* Rozmycie tła */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Delikatna ramka */
+  animation: fadeIn 0.6s ease-in-out; /* Animacja wejścia */
 }
 
 /* Animacja wejścia */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-40px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -26,135 +26,142 @@
 /* Nagłówek formularza */
 .strategy-form h2 {
   text-align: center;
-  font-size: 4rem; /* Jeszcze większy nagłówek */
-  margin-bottom: 3rem;
-  background: linear-gradient(90deg, #4CAF50, #00bfff);
-  background-clip: text; /* Gradient na tekście */
-  -webkit-background-clip: text; /* Gradient na tekście (dla Safari) */
-  -webkit-text-fill-color: transparent; /* Transparentny tekst */
+  font-size: 2.5rem; /* Mniejszy nagłówek dla czytelności */
+  margin-bottom: 2rem;
+  color: #333; /* Neutralny kolor tekstu */
+  font-weight: bold;
+  letter-spacing: 1px; /* Lekki odstęp między literami */
 }
 
 /* Stylizacja etykiet */
 .strategy-form label {
   display: block;
-  margin-bottom: 2.5rem; /* Większy odstęp */
-  font-weight: bold;
-  font-size: 2.5rem; /* Duże etykiety */
-  color: #2e2e2e;
+  margin-bottom: 1.5rem; /* Optymalny odstęp */
+  font-size: 1.2rem; /* Czytelny rozmiar czcionki */
+  color: #555; /* Neutralny kolor tekstu */
+  font-weight: 600; /* Lekko pogrubiony tekst */
 }
 
-/* Powiększone pola tekstowe */
+/* Pola tekstowe i pola input */
 .strategy-form textarea,
 .strategy-form input {
   width: 100%;
-  min-height: 200px; /* Jeszcze większe pola tekstowe */
-  padding: 2.5rem; /* Większy padding */
-  margin-top: 1rem;
-  font-size: 2.5rem; /* Większa czcionka */
-  border: 2px solid rgba(0, 0, 0, 0.4); /* Grubsza ramka */
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.9); /* Jaśniejsze pola */
-  transition: box-shadow 0.4s ease, transform 0.3s ease; /* Animacje */
+  min-height: 120px; /* Optymalna wysokość pól tekstowych */
+  padding: 1.2rem; /* Komfortowy padding */
+  margin-top: 0.5rem;
+  font-size: 1rem; /* Czytelna czcionka */
+  border: 1px solid #ddd; /* Delikatna ramka */
+  border-radius: 8px; /* Lekko zaokrąglone rogi */
+  background: rgba(255, 255, 255, 0.95); /* Jasne tło */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Efekt przy focus */
 }
 
-/* Animacja focus (powiększenie pola podczas edycji) */
+/* Efekt hover i focus na polach tekstowych */
 .strategy-form textarea:focus,
 .strategy-form input:focus {
   outline: none;
-  box-shadow: 0 0 25px rgba(0, 123, 255, 0.9);
-  transform: scale(1.08); /* Mocniejsze powiększenie */
+  border-color: #007bff; /* Kolor obramowania przy focus */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* Subtelny cień */
 }
 
-/* Stylowanie przycisku */
+/* Przycisk generowania strategii */
 .strategy-form button {
   display: block;
   width: 100%;
-  padding: 2rem; /* Większy padding */
-  font-size: 2.2rem; /* Większy tekst na przycisku */
-  color: #fff;
-  background: linear-gradient(90deg, #4CAF50, #00bfff);
+  padding: 1.2rem; /* Komfortowy padding */
+  margin-top: 1.5rem;
+  font-size: 1.2rem; /* Czytelna czcionka */
+  color: #fff; /* Biały tekst */
+  background: linear-gradient(90deg, #007bff, #00bfff); /* Gradientowy kolor */
   border: none;
-  border-radius: 60px; /* Bardziej zaokrąglony przycisk */
+  border-radius: 50px; /* Zaokrąglony przycisk */
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 123, 255, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animacje */
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4); /* Subtelny cień */
 }
 
 /* Efekt hover na przycisku */
 .strategy-form button:hover {
-  transform: scale(1.15); /* Większe powiększenie */
-  box-shadow: 0 15px 40px rgba(0, 123, 255, 0.8);
+  transform: scale(1.05); /* Lekkie powiększenie */
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6); /* Silniejszy cień */
 }
 
-/* Efekt bounce po kliknięciu */
+/* Efekt kliknięcia */
 .strategy-form button:active {
-  animation: bounce 0.5s ease;
-}
-
-@keyframes bounce {
-  0% { transform: scale(1); }
-  50% { transform: scale(0.95); }
-  100% { transform: scale(1); }
+  transform: scale(0.98); /* Lekkie zmniejszenie */
 }
 
 /* Responsywność */
 @media (max-width: 1200px) {
   .strategy-form {
-    padding: 3rem;
+    padding: 2rem; /* Zmniejszony padding */
+    margin: 3rem auto; /* Zmniejszony margines */
   }
 
   .strategy-form h2 {
-    font-size: 3rem;
+    font-size: 2.2rem; /* Mniejszy nagłówek */
   }
 
   .strategy-form textarea,
   .strategy-form input {
-    min-height: 150px; /* Dostosowanie wysokości */
-    font-size: 3rem; /* Dostosowanie czcionki */
+    min-height: 100px; /* Zmniejszona wysokość pól tekstowych */
+    font-size: 1rem; /* Mniejsza czcionka */
+    padding: 1rem; /* Zmniejszony padding */
   }
 
   .strategy-form button {
-    font-size: 1.8rem;
+    font-size: 1.1rem; /* Mniejszy tekst na przycisku */
+    padding: 1rem; /* Zmniejszony padding */
   }
 }
 
 @media (max-width: 768px) {
   .strategy-form {
-    padding: 3rem;
+    padding: 1.5rem; /* Jeszcze mniejszy padding */
+    margin: 2rem auto; /* Jeszcze mniejszy margines */
   }
 
   .strategy-form h2 {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Jeszcze mniejszy nagłówek */
   }
 
   .strategy-form textarea,
   .strategy-form input {
-    min-height: 120px; /* Mniejsze pola */
-    font-size: 5rem;
+    min-height: 80px; /* Jeszcze mniejsza wysokość pól tekstowych */
+    font-size: 0.9rem; /* Jeszcze mniejsza czcionka */
+    padding: 0.8rem; /* Jeszcze mniejszy padding */
   }
 
   .strategy-form button {
-    font-size: 1.5rem;
+    font-size: 1rem; /* Jeszcze mniejszy tekst na przycisku */
+    padding: 0.8rem; /* Jeszcze mniejszy padding */
   }
 }
 
 @media (max-width: 480px) {
   .strategy-form {
-    padding: 1.5rem;
+    padding: 1rem; /* Najmniejszy padding */
+    margin: 1.5rem auto; /* Najmniejszy margines */
   }
 
   .strategy-form h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Najmniejszy nagłówek */
+  }
+
+  .strategy-form label {
+    font-size: 1rem; /* Najmniejsza etykieta */
   }
 
   .strategy-form textarea,
   .strategy-form input {
-    min-height: 100px; /* Dopasowanie dla małych ekranów */
-    font-size: 3rem;
+    min-height: 60px; /* Minimalna wysokość dla małych ekranów */
+    font-size: 0.8rem; /* Najmniejsza czcionka */
+    padding: 0.6rem; /* Najmniejszy padding */
   }
 
   .strategy-form button {
-    font-size: 1.3rem;
+    font-size: 0.9rem; /* Najmniejszy tekst na przycisku */
+    padding: 0.6rem; /* Najmniejszy padding */
   }
 }
 
@@ -166,95 +173,13 @@ body {
 }
 
 @keyframes backgroundMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-/* Responsywność */
-@media (max-width: 1200px) {
-  .strategy-form {
-    padding: 2rem; /* Zmniejszony padding */
-    margin: 2rem auto; /* Zmniejszony margines */
+  0% {
+    background-position: 0% 50%;
   }
-
-  .strategy-form h2 {
-    font-size: 2.5rem; /* Mniejszy nagłówek */
-    margin-bottom: 2rem; /* Zmniejszony margines */
+  50% {
+    background-position: 100% 50%;
   }
-
-  .strategy-form label {
-    font-size: 2rem; /* Mniejsza etykieta */
-    margin-bottom: 2rem; /* Mniejszy odstęp */
-  }
-
-  .strategy-form textarea,
-  .strategy-form input {
-    min-height: 150px; /* Dostosowanie wysokości */
-    font-size: 1.8rem; /* Dostosowanie czcionki */
-    padding: 1.5rem; /* Mniejszy padding */
-  }
-
-  .strategy-form button {
-    font-size: 1.6rem; /* Mniejszy przycisk */
-    padding: 1.5rem; /* Mniejszy padding */
+  100% {
+    background-position: 0% 50%;
   }
 }
-
-@media (max-width: 768px) {
-  .strategy-form {
-    padding: 1.5rem; /* Jeszcze mniejszy padding */
-    margin: 1.5rem auto; /* Jeszcze mniejszy margines */
-  }
-
-  .strategy-form h2 {
-    font-size: 2rem; /* Jeszcze mniejszy nagłówek */
-    margin-bottom: 1.5rem; /* Jeszcze mniejszy margines */
-  }
-
-  .strategy-form label {
-    font-size: 1.6rem; /* Jeszcze mniejsza etykieta */
-    margin-bottom: 1.5rem; /* Jeszcze mniejszy odstęp */
-  }
-
-  .strategy-form textarea,
-  .strategy-form input {
-    min-height: 120px; /* Mniejsze pola */
-    font-size: 1.4rem; /* Jeszcze mniejsza czcionka */
-    padding: 1.2rem; /* Jeszcze mniejszy padding */
-  }
-
-  .strategy-form button {
-    font-size: 1.4rem; /* Jeszcze mniejszy przycisk */
-    padding: 1.2rem; /* Jeszcze mniejszy padding */
-  }
-}
-
-@media (max-width: 480px) {
-  .strategy-form {
-    padding: 1rem; /* Najmniejszy padding */
-    margin: 1rem auto; /* Najmniejszy margines */
-  }
-
-  .strategy-form h2 {
-    font-size: 1.7rem; /* Najmniejszy nagłówek */
-    margin-bottom: 1rem; /* Najmniejszy margines */
-  }
-
-  .strategy-form label {
-    font-size: 1.4rem; /* Najmniejsza etykieta */
-    margin-bottom: 1rem; /* Najmniejszy odstęp */
-  }
-
-  .strategy-form textarea,
-  .strategy-form input {
-    min-height: 100px; /* Dopasowanie dla małych ekranów */
-    font-size: 1.2rem; /* Najmniejsza czcionka */
-    padding: 1rem; /* Najmniejszy padding */
-  }
-
-  .strategy-form button {
-    font-size: 1.2rem; /* Najmniejszy przycisk */
-    padding: 1rem; /* Najmniejszy padding */
-  }
-}
-
