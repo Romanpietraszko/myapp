@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import './CampaignPlanner.css';
-import EducationTips from '../components/EducationTips'; // Import komponentu
 
 interface Campaign {
   id: number;
@@ -10,6 +9,37 @@ interface Campaign {
   schedule: string;
 }
 
+interface Task {
+  id: number;
+  name: string;
+  startDate: string;
+  endDate: string;
+  priorityId: number | null;
+  campaignId: number | null;
+}
+
+// Komponent Modal
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}
+
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>
+          &times;
+        </button>
+        {children}
+      </div>
+    </div>
+  );
+};
+
 const CampaignPlanner: React.FC = () => {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [name, setName] = useState('');
@@ -18,13 +48,20 @@ const CampaignPlanner: React.FC = () => {
   const [schedule, setSchedule] = useState('');
   const [filter, setFilter] = useState('');
 
-  // Predefiniowane cele kampanii
-  const goalFilters = ['Zwiększenie sprzedaży', 'Budowanie świadomości marki', 'Promocja produktów sezonowych'];
+  // Priorytety
+  const [priorities, setPriorities] = useState<{ id: number; name: string }[]>([]);
+
+  // Zadania
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  // Modale
+  const [isPriorityModalOpen, setIsPriorityModalOpen] = useState(false);
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   // Automatyczne ładowanie danych z localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('campaigns');
-    if (saved) setCampaigns(JSON.parse(saved));
+    const savedCampaigns = localStorage.getItem('campaigns');
+    if (savedCampaigns) setCampaigns(JSON.parse(savedCampaigns));
   }, []);
 
   // Automatyczne zapisywanie danych do localStorage
@@ -32,21 +69,15 @@ const CampaignPlanner: React.FC = () => {
     localStorage.setItem('campaigns', JSON.stringify(campaigns));
   }, [campaigns]);
 
-  // Dodawanie nowej kampanii
+  // Dodawanie kampanii
   const addCampaign = () => {
     if (!name || !goal || budget <= 0) return alert('Uzupełnij wszystkie wymagane pola!');
-    const today = new Date();
-    const endDate = new Date(today.setDate(today.getDate() + 7));
-    const formatDate = (date: Date) =>
-      `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
-    const newSchedule = schedule || `${formatDate(new Date())} - ${formatDate(endDate)}`;
-
     const newCampaign: Campaign = {
       id: Date.now(),
       name,
       goal,
       budget,
-      schedule: newSchedule,
+      schedule: schedule || 'Brak harmonogramu',
     };
     setCampaigns([...campaigns, newCampaign]);
     resetForm();
@@ -65,17 +96,98 @@ const CampaignPlanner: React.FC = () => {
     setCampaigns(campaigns.filter((campaign) => campaign.id !== id));
   };
 
+  // Dodawanie priorytetu
+  const addPriority = (newPriorityName: string) => {
+    if (!newPriorityName.trim()) return alert('Nazwa priorytetu nie może być pusta!');
+    const newPriority = { id: Date.now(), name: newPriorityName.trim() };
+    setPriorities([...priorities, newPriority]);
+    setIsPriorityModalOpen(false);
+  };
+
+  // Usuwanie priorytetu
+  const deletePriority = (id: number) => {
+    setPriorities(priorities.filter((priority) => priority.id !== id));
+  };
+
+  // Dodawanie zadania
+  const addTask = (taskData: Omit<Task, 'id'>) => {
+    const newTask: Task = { ...taskData, id: Date.now() };
+    setTasks([...tasks, newTask]);
+    setIsTaskModalOpen(false);
+  };
+
+  // Usuwanie zadania
+  const deleteTask = (id: number) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
   return (
     <div className="campaign-planner">
-      <h2>📊 Planer Kampanii</h2>
-      <EducationTips
-        categories={['Social Media', 'Automatyzacja', 'Analityka']}
-        defaultCategory="Social Media"
-        customContextPlaceholder="Np. e-commerce platforma"
-        initialTipText="Otrzymaj spersonalizowaną wskazówkę!"
-      />
-      {/* Formularz */}
+      <h2>📊 Planer Kampanii i czasu</h2>
+
+      {/* Sekcja priorytetów */}
+      <section className="section">
+        <h3>📋 Lista Priorytetów:</h3>
+        <button onClick={() => setIsPriorityModalOpen(true)}>Dodaj Priorytet</button>
+        <ul>
+          {priorities.map((priority) => (
+            <li key={priority.id}>
+              {priority.name}
+              <button onClick={() => deletePriority(priority.id)}>Usuń</button>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Sekcja zadań */}
+      <section className="section">
+        <h3>📅 Lista Zadań:</h3>
+        <button onClick={() => setIsTaskModalOpen(true)}>Dodaj Zadanie</button>
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              <strong>{task.name}</strong>
+              <br />
+              📅 {task.startDate} - {task.endDate}
+              <br />
+              🔘 Priorytet: {task.priorityId || 'Brak'}
+              <br />
+              🎯 Kampania: {task.campaignId || 'Brak'}
+              <button onClick={() => deleteTask(task.id)}>Usuń</button>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Sekcja kampanii */}
+      <section className="section">
+        <h3>📌 Zapisane Kampanie:</h3>
+        <input
+          type="text"
+          placeholder="Filtruj kampanie..."
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        />
+        <ul>
+          {campaigns
+            .filter(({ name, goal }) =>
+              filter
+                ? name.toLowerCase().includes(filter.toLowerCase()) || goal.toLowerCase().includes(filter.toLowerCase())
+                : true
+            )
+            .map((campaign) => (
+              <li key={campaign.id}>
+                <strong>{campaign.name}</strong> – {campaign.goal} – {campaign.budget} PLN
+                <br />📅 {campaign.schedule}
+                <button onClick={() => deleteCampaign(campaign.id)}>Usuń</button>
+              </li>
+            ))}
+        </ul>
+      </section>
+
+      {/* Formularz dodawania kampanii */}
       <div className="form">
+        <h3>📝 Dodaj Nową Kampanię</h3>
         <input
           type="text"
           placeholder="Nazwa kampanii"
@@ -86,11 +198,9 @@ const CampaignPlanner: React.FC = () => {
           <label>Cel kampanii:</label>
           <select value={goal} onChange={(e) => setGoal(e.target.value)}>
             <option value="">Wybierz cel...</option>
-            {goalFilters.map((goalOption, index) => (
-              <option key={index} value={goalOption}>
-                {goalOption}
-              </option>
-            ))}
+            <option value="Zwiększenie sprzedaży">Zwiększenie sprzedaży</option>
+            <option value="Budowanie świadomości marki">Budowanie świadomości marki</option>
+            <option value="Promocja produktów sezonowych">Promocja produktów sezonowych</option>
           </select>
           <input
             type="text"
@@ -111,39 +221,51 @@ const CampaignPlanner: React.FC = () => {
           value={schedule}
           onChange={(e) => setSchedule(e.target.value)}
         />
+        {/* Przycisk dodający kampanię */}
         <button onClick={addCampaign}>Dodaj Kampanię</button>
       </div>
 
-      {/* Filtr kampanii */}
-      <input
-        type="text"
-        placeholder="Filtruj kampanie..."
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-      />
+      {/* Modal dodawania priorytetu */}
+      <Modal isOpen={isPriorityModalOpen} onClose={() => setIsPriorityModalOpen(false)}>
+        <h4>Dodaj Priorytet</h4>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target as HTMLFormElement);
+            const newPriorityName = formData.get('priorityName') as string;
+            addPriority(newPriorityName);
+          }}
+        >
+          <input type="text" name="priorityName" placeholder="Nazwa priorytetu" required />
+          <button type="submit">Dodaj</button>
+        </form>
+      </Modal>
 
-      {/* Lista kampanii */}
-      <h3>📌 Zapisane Kampanie:</h3>
-      <ul>
-        {campaigns
-          .filter(({ name, goal }) =>
-            filter
-              ? name.toLowerCase().includes(filter.toLowerCase()) || goal.toLowerCase().includes(filter.toLowerCase())
-              : true
-          )
-          .sort((a, b) => {
-            const dateA = new Date(a.schedule.split(' - ')[0].split('.').reverse().join('-'));
-            const dateB = new Date(b.schedule.split(' - ')[0].split('.').reverse().join('-'));
-            return dateA.getTime() - dateB.getTime();
-          })
-          .map((campaign) => (
-            <li key={campaign.id}>
-              <strong>{campaign.name}</strong> – {campaign.goal} – {campaign.budget} PLN
-              <br />📅 {campaign.schedule}
-              <button onClick={() => deleteCampaign(campaign.id)}>Usuń</button>
-            </li>
-          ))}
-      </ul>
+      {/* Modal dodawania zadania */}
+      <Modal isOpen={isTaskModalOpen} onClose={() => setIsTaskModalOpen(false)}>
+        <h4>Dodaj Zadanie</h4>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target as HTMLFormElement);
+            const taskData = {
+              name: formData.get('taskName') as string,
+              startDate: formData.get('startDate') as string,
+              endDate: formData.get('endDate') as string,
+              priorityId: Number(formData.get('priorityId')) || null,
+              campaignId: Number(formData.get('campaignId')) || null,
+            };
+            addTask(taskData);
+          }}
+        >
+          <input type="text" name="taskName" placeholder="Nazwa zadania" required />
+          <input type="date" name="startDate" required />
+          <input type="date" name="endDate" required />
+          <input type="number" name="priorityId" placeholder="ID priorytetu (opcjonalne)" />
+          <input type="number" name="campaignId" placeholder="ID kampanii (opcjonalne)" />
+          <button type="submit">Dodaj</button>
+        </form>
+      </Modal>
     </div>
   );
 };
