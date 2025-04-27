@@ -3,7 +3,13 @@
   width: 100%; /* Cała szerokość ekranu */
   padding: 2rem;
   text-align: center;
-  background-color: rgb(243, 236, 236);
+  background-color: #f3f3f3; /* Jasne tło */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
 /* Styl zakładek */
@@ -22,23 +28,55 @@
   background: linear-gradient(90deg, #4CAF50, #00bfff);
   color: white;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   font-size: 1rem; /* Domyślny rozmiar tekstu */
+  position: relative;
+  overflow: hidden;
+}
+
+.tabs button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3); /* Efekt światła */
+  transition: left 0.3s ease;
+  z-index: 1;
+}
+
+.tabs button:hover::after {
+  left: 100%; /* Przesunięcie efektu świetlnego */
 }
 
 .tabs button:hover {
-  transform: scale(1.1);
+  transform: scale(1.05); /* Subtelne powiększenie */
+  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.6); /* Niebieski cień */
 }
 
 /* Aktywna zakładka */
 .tabs button.active {
   background: #2e7d32;
   box-shadow: 0 0 15px rgba(0, 255, 128, 0.7);
+  transform: scale(1.05); /* Lekkie powiększenie aktywnej zakładki */
 }
 
 /* Styl zawartości zakładek */
 .tab-content {
   margin-top: 2rem;
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tab-content:hover {
+  transform: scale(1.02); /* Lekkie powiększenie przy najechaniu */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Silniejszy cień */
 }
 
 /* Przycisk powrotu */
@@ -46,16 +84,51 @@
   display: inline-block;
   padding: 0.7rem 1.5rem;
   background: linear-gradient(90deg, #007bff, #00bfff);
-  color: rgb(255, 255, 255);
+  color: white;
   border-radius: 8px;
   text-decoration: none;
   margin-top: 2rem;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   font-size: 1rem; /* Domyślny rozmiar tekstu */
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3); /* Efekt światła */
+  transition: left 0.3s ease;
+  z-index: 1;
+}
+
+.cta-button:hover::after {
+  left: 100%; /* Przesunięcie efektu świetlnego */
 }
 
 .cta-button:hover {
-  transform: scale(1.1);
+  transform: scale(1.05); /* Subtelne powiększenie */
+  box-shadow: 0 8px 20px rgba(0, 191, 255, 0.6); /* Niebieski cień */
+}
+
+/* Animacja fadeIn */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
 }
 
 /* Media queries */
@@ -94,5 +167,69 @@
   .cta-button {
     padding: 0.4rem 0.8rem; /* Jeszcze mniejszy padding */
     font-size: 0.8rem; /* Jeszcze mniejszy tekst */
+  }
+}
+/* Styl overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Półprzejrzyste tło */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Styl zawartości modala */
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+}
+
+/* Przycisk zamknięcia modala */
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #00bfff; /* Niebieski akcent */
+}
+
+/* Animacja fadeIn dla modala */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%; /* Dużej szerokości na małych ekranach */
   }
 }

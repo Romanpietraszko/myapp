@@ -1,52 +1,107 @@
-/* StrategyResult.css */
-
+/* Główny kontener */
 .strategy-result {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 30px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    overflow-wrap: break-word;
-    word-break: break-word;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  margin: 30px auto; /* Wyśrodkowanie */
+  max-width: 800px; /* Ograniczenie szerokości dla czytelności */
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease-in-out; /* Animacja pojawiania się */
+  text-align: center; /* Wyśrodkowanie tekstu */
+}
+
+/* Animacja wejścia */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Nagłówek */
+.strategy-result h2 {
+  color: #007bff; /* Kolor akcentowy */
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtelny efekt świecenia */
+}
+
+/* Treść strategii */
+.strategy-result pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+  max-width: 100%;
+  background-color: #f9f9f9; /* Jasne tło */
+  padding: 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #424141; /* Neutralny kolor tekstu */
+  line-height: 1.6; /* Lepsza czytelność */
+  border: 1px solid #ddd; /* Delikatna ramka */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efekt hover */
+}
+
+/* Efekt hover na treści strategii */
+.strategy-result pre:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Silniejszy cień */
+}
+
+/* Komunikat o braku wyników */
+.strategy-result .no-results {
+  font-size: 1.2rem;
+  color: #dc3545; /* Czerwony kolor dla ostrzeżenia */
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* Paragrafy */
+.strategy-result p {
+  color: #343333; /* Neutralny kolor tekstu */
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6; /* Lepsza czytelność */
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .strategy-result {
+    margin: 10px auto;
+    padding: 1rem;
+  }
+
   .strategy-result h2 {
-    color: #101010;
     font-size: 1.5rem;
-    margin-bottom: 15px;
   }
-  
-  .strategy-result p {
-    color: #555;
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-  
+
+  .strategy-result p,
   .strategy-result pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-x: auto;
-    max-width: 100%;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 4px;
     font-size: 0.9rem;
   }
-  
-  @media (max-width: 768px) {
-    .strategy-result {
-      margin: 10px;
-      padding: 10px;
-    }
-  
-    .strategy-result h2 {
-      font-size: 1.2rem;
-    }
-  
-    .strategy-result p,
-    .strategy-result pre {
-      font-size: 0.9rem;
-    }
+}
+
+@media (max-width: 480px) {
+  .strategy-result {
+    margin: 5px auto;
+    padding: 0.75rem;
   }
+
+  .strategy-result h2 {
+    font-size: 1.2rem;
+  }
+
+  .strategy-result p,
+  .strategy-result pre {
+    font-size: 0.8rem;
+  }
+}

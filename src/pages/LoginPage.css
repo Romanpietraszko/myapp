@@ -1,45 +1,102 @@
-/* LoginPage.css */
-
 /* Kontener główny */
 .login-container {
-    width: 100%;
-    background-color: #000; /* Czarne tło */
-    color: white; /* Biały tekst */
-    min-height: 100vh; /* Cała wysokość ekranu */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrowanie w poziomie */
-    justify-content: center; /* Centrowanie w pionie */
-    padding: 20px; /* Odstęp od krawędzi ekranu */
+  width: 100%;
+  background-color: #000; /* Czarne tło */
+  color: white; /* Biały tekst */
+  min-height: 100vh; /* Cała wysokość ekranu */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrowanie w poziomie */
+  justify-content: center; /* Centrowanie w pionie */
+  padding: 20px; /* Odstęp od krawędzi ekranu */
+  overflow: hidden; /* Zapobieganie przewijaniu niepotrzebnych elementów */
+}
+
+/* Kontener logo */
+.logo-container {
+  text-align: center; /* Wyśrodkowanie logo */
+  cursor: pointer; /* Efekt wskaźnika myszy */
+  position: relative; /* Pozycjonowanie względne dla efektów świetlnych */
+  transition: transform 0.3s ease; /* Płynne przejście przy najechaniu */
+}
+
+/* Styl dla obrazka logo */
+.logo-image {
+  width: 200px; /* Szerokość logo */
+  height: auto; /* Automatyczna wysokość, aby zachować proporcje */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animacja przy najechaniu */
+  border-radius: 10px; /* Lekko zaokrąglone rogi */
+  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.6); /* Niebieski cień */
+}
+
+/* Efekt hover na logo */
+.logo-image:hover {
+  transform: scale(1.1); /* Lekkie powiększenie przy najechaniu */
+  box-shadow: 0 8px 30px rgba(0, 191, 255, 0.8); /* Silniejszy cień */
+}
+
+/* Efekt "światła" wokół logo */
+.logo-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(0, 191, 255, 0.4), transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Wyłączenie interakcji z pseudo-elementem */
+}
+
+/* Efekt hover na kontenerze logo */
+.logo-container:hover::after {
+  opacity: 1; /* Pokaż światło przy najechaniu */
+}
+
+/* Animacja "pulsowania" */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  /* Kontener logo */
-  .logo-container {
-    text-align: center; /* Wyśrodkowanie logo */
-    cursor: pointer; /* Efekt wskaźnika myszy */
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
   }
-  
-  /* Styl dla obrazka logo */
-  .logo-image {
-    width: 200px; /* Szerokość logo */
-    height: auto; /* Automatyczna wysokość, aby zachować proporcje */
-    transition: transform 0.3s ease; /* Animacja przy najechaniu */
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  /* Efekt hover na logo */
-  .logo-image:hover {
-    transform: scale(1.1); /* Lekkie powiększenie przy najechaniu */
-  }
-  /* Media queries dla ekranów mobilnych */
+}
+
+/* Dodatkowa klasa dla animacji */
+.animated-logo {
+  animation: pulse 3s infinite ease-in-out; /* Pulsowanie w nieskończoność */
+}
+
+/* Media queries dla ekranów mobilnych */
 @media (max-width: 600px) {
-    .logo-image {
-      width: 150px; /* Mniejsze logo na małych ekranach */
-    }
+  .logo-image {
+    width: 150px; /* Mniejsze logo na małych ekranach */
   }
-  
-  /* Media queries dla ekranów desktopowych */
-  @media (min-width: 1200px) {
-    .logo-image {
-      width: 300px; /* Większe logo na dużych ekranach */
-    }
+
+  .logo-container::after {
+    width: 200px;
+    height: 200px; /* Mniejszy efekt światła */
   }
+}
+
+/* Media queries dla ekranów desktopowych */
+@media (min-width: 1200px) {
+  .logo-image {
+    width: 300px; /* Większe logo na dużych ekranach */
+  }
+
+  .logo-container::after {
+    width: 350px;
+    height: 350px; /* Większy efekt światła */
+  }
+}

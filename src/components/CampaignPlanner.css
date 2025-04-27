@@ -1,95 +1,60 @@
+/* Główny kontener */
 .campaign-planner {
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-  
-  .form input {
-    display: block;
-    width: 100%;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    border-radius: 12px;
-    border: 1px solid #4e54c8;
-  }
-  
-  button {
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #4CAF50, #00bfff);
-    color: white;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    transform: scale(1.1);
-  }
-  
-  ul {
-    list-style: none;
-  }
-  
-  li {
-    margin: 1rem 0;
-    padding: 1rem;
-    border-radius: 12px;
-    background: #e3e3e3;
-  }
-  /* Media queries */
-@media (max-width: 768px) {
-  .campaign-planner {
-    padding: 1.5rem; /* Mniejszy padding */
-    border-radius: 15px; /* Mniejsze rogi */
-  }
-
-  .form input {
-    padding: 0.8rem; /* Mniejszy padding */
-    border-radius: 8px; /* Mniejsze rogi */
-    margin: 0.3rem 0; /* Mniejszy margines */
-  }
-
-  button {
-    padding: 0.8rem 1.5rem; /* Mniejszy padding */
-    font-size: 0.9rem; /* Mniejszy tekst */
-    border-radius: 6px; /* Mniejsze rogi */
-  }
-
-  li {
-    padding: 0.8rem; /* Mniejszy padding */
-    border-radius: 8px; /* Mniejsze rogi */
-    margin: 0.8rem 0; /* Mniejszy margines */
-  }
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: hidden; /* Zapobieganie przewijaniu poziomemu */
 }
 
-/* Małe ekrany (np. telefony) */
-@media (max-width: 480px) {
-  .campaign-planner {
-    padding: 1rem; /* Jeszcze mniejszy padding */
-    border-radius: 10px; /* Jeszcze mniejsze rogi */
-  }
-
-  .form input {
-    padding: 0.6rem; /* Jeszcze mniejszy padding */
-    border-radius: 6px; /* Jeszcze mniejsze rogi */
-    margin: 0.2rem 0; /* Jeszcze mniejszy margines */
-    font-size: 0.8rem; /* Mniejszy tekst */
-  }
-
-  button {
-    padding: 0.6rem 1rem; /* Jeszcze mniejszy padding */
-    font-size: 0.8rem; /* Jeszcze mniejszy tekst */
-    border-radius: 4px; /* Jeszcze mniejsze rogi */
-  }
-
-  li {
-    padding: 0.6rem; /* Jeszcze mniejszy padding */
-    border-radius: 6px; /* Jeszcze mniejsze rogi */
-    margin: 0.6rem 0; /* Jeszcze mniejszy margines */
-    font-size: 0.8rem; /* Mniejszy tekst */
-  }
+/* Formularz */
+.form input {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 12px;
+  border: 1px solid #4e54c8;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+.form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #4CAF50, #00bfff);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.6);
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #e3e3e3;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
 /* Sekcja priorytetów */
 .priorities-section {
   margin-bottom: 2rem;
@@ -107,6 +72,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .priorities-section button:hover {
@@ -127,6 +93,12 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.priorities-section li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .priorities-section li button {
@@ -136,11 +108,13 @@
   border-radius: 5px;
   padding: 0.3rem 0.6rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .priorities-section li button:hover {
   background-color: #a71d2a;
 }
+
 /* Sekcja zadań */
 .tasks-section {
   margin-bottom: 2rem;
@@ -158,6 +132,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .tasks-section button:hover {
@@ -179,6 +154,12 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tasks-section li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .tasks-section li button {
@@ -188,12 +169,14 @@
   border-radius: 5px;
   padding: 0.3rem 0.6rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .tasks-section li button:hover {
   background-color: #a71d2a;
 }
- /* Style modalne */
+
+/* Style modalne */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -213,6 +196,18 @@
   border-radius: 8px;
   width: 300px;
   position: relative;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-close {
@@ -223,6 +218,11 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #007bff;
 }
 
 form input {
@@ -232,4 +232,71 @@ form input {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
-} 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .campaign-planner {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .form input {
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin: 0.3rem 0;
+  }
+
+  button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+  }
+
+  li {
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+  }
+
+  .modal-content {
+    width: 90%; /* Dużej szerokości na małych ekranach */
+  }
+}
+
+@media (max-width: 480px) {
+  .campaign-planner {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .form input {
+    padding: 0.6rem;
+    border-radius: 6px;
+    margin: 0.2rem 0;
+    font-size: 0.8rem;
+  }
+
+  button {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+  }
+
+  li {
+    padding: 0.6rem;
+    border-radius: 6px;
+    margin: 0.6rem 0;
+    font-size: 0.8rem;
+  }
+
+  .modal-content {
+    width: 95%; /* Jeszcze większa szerokość na telefonach */
+  }
+}

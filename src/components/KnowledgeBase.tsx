@@ -84,49 +84,78 @@ const KnowledgeBase: React.FC = () => {
     <div className="knowledge-base">
       <h2>📚 Baza Wiedzy</h2>
 
+      {/* Panel filtrów */}
       <div className="filters">
         <input
           type="text"
-          placeholder="Szukaj w bazie wiedzy..."
+          placeholder="🔍 Szukaj w bazie wiedzy..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          className="search-input"
         />
 
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
+          className="filter-select"
         >
           {categories.map((category) => (
-            <option key={category} value={category}>{category}</option>
+            <option key={category} value={category}>
+              {category}
+            </option>
           ))}
         </select>
 
         <select
           value={selectedTag}
           onChange={(e) => setSelectedTag(e.target.value)}
+          className="filter-select"
         >
           {tags.map((tag) => (
-            <option key={tag} value={tag}>{tag}</option>
+            <option key={tag} value={tag}>
+              {tag}
+            </option>
           ))}
         </select>
       </div>
 
+      {/* Sekcja artykułów */}
       <div className="content">
         <div className="sidebar">
-          {/* Tutaj możesz dodać menu boczne z kategoriami i tagami */}
+          {/* Menu boczne z kategoriami */}
+          <h4>Kategorie:</h4>
+          <ul className="sidebar-list">
+            {categories.map((category) => (
+              <li
+                key={category}
+                className={selectedCategory === category ? 'active-category' : ''}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category}
+              </li>
+            ))}
+          </ul>
         </div>
+
         <div className="articles">
-          {filteredArticles.map((article) => (
-            <div key={article.id} className="article">
-              <h3 onClick={() => toggleArticle(article.id)}>
-                {article.title}
-                {expandedArticleId === article.id ? ' ⬆' : ' ⬇'}
-              </h3>
-              {expandedArticleId === article.id && (
-                <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
-              )}
-            </div>
-          ))}
+          {filteredArticles.length > 0 ? (
+            filteredArticles.map((article) => (
+              <div key={article.id} className="article">
+                <h3 onClick={() => toggleArticle(article.id)} className="article-title">
+                  {article.title}
+                  {expandedArticleId === article.id ? ' ⬆' : ' ⬇'}
+                </h3>
+                {expandedArticleId === article.id && (
+                  <div
+                    className="article-content"
+                    dangerouslySetInnerHTML={{ __html: article.content }}
+                  ></div>
+                )}
+              </div>
+            ))
+          ) : (
+            <p className="no-results">Brak wyników dla wybranych filtrów.</p>
+          )}
         </div>
       </div>
     </div>

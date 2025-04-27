@@ -1,13 +1,182 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* Czcionka */
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif; /* Nowoczesna czcionka */
+  line-height: 1.6; /* Lepsza wysokość linii dla czytelności */
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(242, 240, 240, 0.87);
-  background-color: #212020; /* Białe tło */
+  /* Kolory */
+  color-scheme: light dark; /* Obsługa trybu jasnego i ciemnego */
+  color: rgba(255, 255, 255, 0.87); /* Jasny tekst w trybie ciemnym */
+  background-color: #121212; /* Ciemne tło domyślnie */
+
+  /* Optymalizacja renderowania tekstu */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Akcentowe kolory */
+  --primary-color: #00bfff; /* Niebieski akcent */
+  --secondary-color: #ff6f61; /* Pomarańczowy akcent */
+  --hover-color: #ffffff; /* Jasny kolor hover */
+}
+
+/* Jasny tryb */
+body:not(.dark-mode) {
+  background-color: #ffffff; /* Białe tło */
+  color: #202020; /* Ciemny tekst w trybie jasnym */
+}
+
+/* Ciemny tryb */
+body.dark-mode {
+  background-color: #121212; /* Bardzo ciemne tło */
+  color: rgba(255, 255, 255, 0.87); /* Jasny tekst w trybie ciemnym */
+}
+
+/* Globalne ustawienia */
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Płynne przejście między trybami */
+}
+
+/* Linki */
+a {
+  color: var(--primary-color); /* Niebieski akcent */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--hover-color); /* Jasny kolor hover */
+}
+
+/* Nagłówki */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600; /* Lekko pogrubiony tekst */
+  color: inherit; /* Dziedziczy kolor z rodzica */
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Paragrafy */
+p {
+  font-size: 1rem; /* Standardowy rozmiar tekstu */
+  line-height: 1.6; /* Lepsza czytelność */
+  margin-bottom: 1rem;
+}
+
+/* Przyciski */
+button {
+  background-color: var(--primary-color); /* Niebieskie tło */
+  color: #ffffff; /* Jasny tekst */
+  border: none;
+  border-radius: 8px; /* Lekko zaokrąglone rogi */
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Delikatny cień */
+}
+
+button:hover {
+  transform: scale(1.05); /* Subtelne powiększenie */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Silniejszy cień */
+}
+
+button:active {
+  transform: scale(0.98); /* Lekkie zmniejszenie */
+}
+
+/* Inputy i pola tekstowe */
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Delikatna ramka */
+  border-radius: 8px; /* Lekko zaokrąglone rogi */
+  background-color: rgba(255, 255, 255, 0.1); /* Przejrzyste tło */
+  color: inherit; /* Dziedziczy kolor z rodzica */
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color); /* Niebieska ramka przy focus */
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.3); /* Subtelny cień */
+}
+
+/* Animacje */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  input,
+  textarea {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  input,
+  textarea {
+    font-size: 0.8rem;
+  }
 }

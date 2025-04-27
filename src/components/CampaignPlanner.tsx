@@ -128,12 +128,16 @@ const CampaignPlanner: React.FC = () => {
       {/* Sekcja priorytetów */}
       <section className="section">
         <h3>📋 Lista Priorytetów:</h3>
-        <button onClick={() => setIsPriorityModalOpen(true)}>Dodaj Priorytet</button>
-        <ul>
+        <button className="add-button" onClick={() => setIsPriorityModalOpen(true)}>
+          Dodaj Priorytet
+        </button>
+        <ul className="priority-list">
           {priorities.map((priority) => (
-            <li key={priority.id}>
+            <li key={priority.id} className="priority-item">
               {priority.name}
-              <button onClick={() => deletePriority(priority.id)}>Usuń</button>
+              <button className="delete-button" onClick={() => deletePriority(priority.id)}>
+                🗑️
+              </button>
             </li>
           ))}
         </ul>
@@ -142,10 +146,12 @@ const CampaignPlanner: React.FC = () => {
       {/* Sekcja zadań */}
       <section className="section">
         <h3>📅 Lista Zadań:</h3>
-        <button onClick={() => setIsTaskModalOpen(true)}>Dodaj Zadanie</button>
-        <ul>
+        <button className="add-button" onClick={() => setIsTaskModalOpen(true)}>
+          Dodaj Zadanie
+        </button>
+        <ul className="task-list">
           {tasks.map((task) => (
-            <li key={task.id}>
+            <li key={task.id} className="task-item">
               <strong>{task.name}</strong>
               <br />
               📅 {task.startDate} - {task.endDate}
@@ -153,7 +159,9 @@ const CampaignPlanner: React.FC = () => {
               🔘 Priorytet: {task.priorityId || 'Brak'}
               <br />
               🎯 Kampania: {task.campaignId || 'Brak'}
-              <button onClick={() => deleteTask(task.id)}>Usuń</button>
+              <button className="delete-button" onClick={() => deleteTask(task.id)}>
+                🗑️
+              </button>
             </li>
           ))}
         </ul>
@@ -167,8 +175,9 @@ const CampaignPlanner: React.FC = () => {
           placeholder="Filtruj kampanie..."
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
+          className="filter-input"
         />
-        <ul>
+        <ul className="campaign-list">
           {campaigns
             .filter(({ name, goal }) =>
               filter
@@ -176,10 +185,12 @@ const CampaignPlanner: React.FC = () => {
                 : true
             )
             .map((campaign) => (
-              <li key={campaign.id}>
+              <li key={campaign.id} className="campaign-item">
                 <strong>{campaign.name}</strong> – {campaign.goal} – {campaign.budget} PLN
                 <br />📅 {campaign.schedule}
-                <button onClick={() => deleteCampaign(campaign.id)}>Usuń</button>
+                <button className="delete-button" onClick={() => deleteCampaign(campaign.id)}>
+                  🗑️
+                </button>
               </li>
             ))}
         </ul>
@@ -193,10 +204,15 @@ const CampaignPlanner: React.FC = () => {
           placeholder="Nazwa kampanii"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="form-input"
         />
-        <div>
+        <div className="form-group">
           <label>Cel kampanii:</label>
-          <select value={goal} onChange={(e) => setGoal(e.target.value)}>
+          <select
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
+            className="form-select"
+          >
             <option value="">Wybierz cel...</option>
             <option value="Zwiększenie sprzedaży">Zwiększenie sprzedaży</option>
             <option value="Budowanie świadomości marki">Budowanie świadomości marki</option>
@@ -207,6 +223,7 @@ const CampaignPlanner: React.FC = () => {
             placeholder="Wpisz własny cel..."
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
+            className="form-input"
           />
         </div>
         <input
@@ -214,15 +231,19 @@ const CampaignPlanner: React.FC = () => {
           placeholder="Budżet (PLN)"
           value={budget}
           onChange={(e) => setBudget(Number(e.target.value))}
+          className="form-input"
         />
         <input
           type="text"
           placeholder="Harmonogram (np. 01.04.2024 - 30.04.2024)"
           value={schedule}
           onChange={(e) => setSchedule(e.target.value)}
+          className="form-input"
         />
         {/* Przycisk dodający kampanię */}
-        <button onClick={addCampaign}>Dodaj Kampanię</button>
+        <button className="add-campaign-button" onClick={addCampaign}>
+          Dodaj Kampanię
+        </button>
       </div>
 
       {/* Modal dodawania priorytetu */}
@@ -236,8 +257,16 @@ const CampaignPlanner: React.FC = () => {
             addPriority(newPriorityName);
           }}
         >
-          <input type="text" name="priorityName" placeholder="Nazwa priorytetu" required />
-          <button type="submit">Dodaj</button>
+          <input
+            type="text"
+            name="priorityName"
+            placeholder="Nazwa priorytetu"
+            required
+            className="modal-input"
+          />
+          <button type="submit" className="modal-button">
+            Dodaj
+          </button>
         </form>
       </Modal>
 
@@ -258,12 +287,40 @@ const CampaignPlanner: React.FC = () => {
             addTask(taskData);
           }}
         >
-          <input type="text" name="taskName" placeholder="Nazwa zadania" required />
-          <input type="date" name="startDate" required />
-          <input type="date" name="endDate" required />
-          <input type="number" name="priorityId" placeholder="ID priorytetu (opcjonalne)" />
-          <input type="number" name="campaignId" placeholder="ID kampanii (opcjonalne)" />
-          <button type="submit">Dodaj</button>
+          <input
+            type="text"
+            name="taskName"
+            placeholder="Nazwa zadania"
+            required
+            className="modal-input"
+          />
+          <input
+            type="date"
+            name="startDate"
+            required
+            className="modal-input"
+          />
+          <input
+            type="date"
+            name="endDate"
+            required
+            className="modal-input"
+          />
+          <input
+            type="number"
+            name="priorityId"
+            placeholder="ID priorytetu (opcjonalne)"
+            className="modal-input"
+          />
+          <input
+            type="number"
+            name="campaignId"
+            placeholder="ID kampanii (opcjonalne)"
+            className="modal-input"
+          />
+          <button type="submit" className="modal-button">
+            Dodaj
+          </button>
         </form>
       </Modal>
     </div>

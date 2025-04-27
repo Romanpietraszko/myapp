@@ -81,66 +81,74 @@ const StrategyForm: React.FC<StrategyFormProps> = ({ onGenerate }) => {
   return (
     <div className="strategy-form-container">
       {/* Sekcja z wskazówkami */}
-      <EducationTips
-        categories={['SEO', 'Social Media', 'Content Marketing']}
-        defaultCategory="Social Media"
-        customContextPlaceholder={customContext || 'Brak danych.'} // Dynamiczny kontekst
-      />
+      <div className="education-tips-section">
+        <h3>💡 Wskazówki Dla Ciebie</h3>
+        <EducationTips
+          categories={['SEO', 'Social Media', 'Content Marketing']}
+          defaultCategory="Social Media"
+          customContextPlaceholder={customContext || 'Brak danych.'} // Dynamiczny kontekst
+        />
+      </div>
 
-      <h2>📝 Generuj strategię marketingową</h2>
+      <div className="form-section">
+        <h2>📝 Generuj Strategię Marketingową</h2>
 
-      {/* Formularz */}
-      <form onSubmit={handleSubmit}>
-        {/* Cel kampanii */}
-        <label>
-          🎯 Cel kampanii:
-          <input
-            value={goal}
-            onChange={(e) => {
-              setGoal(e.target.value);
-              if (errors.goal) setErrors({ ...errors, goal: undefined }); // Usuń błąd po edycji
-            }}
-            placeholder="Np. zwiększenie sprzedaży produktów"
-            required
-          />
-        </label>
-        {errors.goal && <p className="error">{errors.goal}</p>}
+        {/* Formularz */}
+        <form onSubmit={handleSubmit}>
+          {/* Cel kampanii */}
+          <label className="form-label">
+            🎯 Cel Kampanii:
+            <input
+              type="text"
+              value={goal}
+              onChange={(e) => {
+                setGoal(e.target.value);
+                if (errors.goal) setErrors({ ...errors, goal: undefined }); // Usuń błąd po edycji
+              }}
+              placeholder="Np. zwiększenie sprzedaży produktów"
+              className={`form-input ${errors.goal ? 'error-input' : ''}`}
+            />
+          </label>
+          {errors.goal && <p className="error">{errors.goal}</p>}
 
-        {/* Grupa docelowa */}
-        <label>
-          👥 Grupa docelowa:
-          <input
-            value={audience}
-            onChange={(e) => {
-              setAudience(e.target.value);
-              if (errors.audience) setErrors({ ...errors, audience: undefined }); // Usuń błąd po edycji
-            }}
-            placeholder="Np. młodzi dorośli interesujący się modą"
-            required
-          />
-        </label>
-        {errors.audience && <p className="error">{errors.audience}</p>}
+          {/* Grupa docelowa */}
+          <label className="form-label">
+            👥 Grupa Docelowa:
+            <input
+              type="text"
+              value={audience}
+              onChange={(e) => {
+                setAudience(e.target.value);
+                if (errors.audience) setErrors({ ...errors, audience: undefined }); // Usuń błąd po edycji
+              }}
+              placeholder="Np. młodzi dorośli interesujący się modą"
+              className={`form-input ${errors.audience ? 'error-input' : ''}`}
+            />
+          </label>
+          {errors.audience && <p className="error">{errors.audience}</p>}
 
-        {/* Platformy */}
-        <label>
-          📱 Platformy (np. Instagram, TikTok):
-          <input
-            value={platforms}
-            onChange={(e) => {
-              setPlatforms(e.target.value);
-              if (errors.platforms) setErrors({ ...errors, platforms: undefined }); // Usuń błąd po edycji
-            }}
-            placeholder="Np. Instagram, Facebook"
-            required
-          />
-        </label>
-        {errors.platforms && <p className="error">{errors.platforms}</p>}
+          {/* Platformy */}
+          <label className="form-label">
+            📱 Platformy (np. Instagram, TikTok):
+            <input
+              type="text"
+              value={platforms}
+              onChange={(e) => {
+                setPlatforms(e.target.value);
+                if (errors.platforms) setErrors({ ...errors, platforms: undefined }); // Usuń błąd po edycji
+              }}
+              placeholder="Np. Instagram, Facebook"
+              className={`form-input ${errors.platforms ? 'error-input' : ''}`}
+            />
+          </label>
+          {errors.platforms && <p className="error">{errors.platforms}</p>}
 
-        {/* Przycisk generowania strategii */}
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Generowanie...' : 'Generuj strategię'}
-        </button>
-      </form>
+          {/* Przycisk generowania strategii */}
+          <button type="submit" disabled={isLoading} className="generate-button">
+            {isLoading ? 'Generowanie...' : 'Generuj Strategię'}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
